@@ -175,7 +175,7 @@ def balance_negative_samples(df: pd.DataFrame, label_name: str, seed: int) -> pd
 
 
 class DragonBaseline(NLPAlgorithm):
-    def __init__(self, input_path: Path = Path("/input"), output_path: Path = Path("/output"), workdir: Path = Path("/opt/app"), model_name: Union[str, Path] = "distilbert-base-multilingual-cased", **kwargs):
+    def __init__(self, input_path: Union[str, Path] = Path("/input"), output_path: Union[str, Path] = Path("/output"), workdir: Union[str, Path] = Path("/opt/app"), model_name: Union[str, Path] = "distilbert-base-multilingual-cased", **kwargs):
         """
         Baseline implementation for the DRAGON Challenge (https://dragon.grand-challenge.org/).
         This baseline uses the HuggingFace Transformers library (https://huggingface.co/transformers/).
@@ -202,10 +202,10 @@ class DragonBaseline(NLPAlgorithm):
         self.create_strided_training_examples = True
 
         # paths for saving the preprocessed data and model checkpoints
-        self.nlp_dataset_train_preprocessed_path = Path(workdir / "nlp-dataset-train-preprocessed.json")
-        self.nlp_dataset_val_preprocessed_path = Path(workdir / "nlp-dataset-val-preprocessed.json")
-        self.nlp_dataset_test_preprocessed_path = Path(workdir / "nlp-dataset-test-preprocessed.json")
-        self.model_save_dir = Path(workdir / "checkpoints")
+        self.nlp_dataset_train_preprocessed_path = Path(workdir) / "nlp-dataset-train-preprocessed.json"
+        self.nlp_dataset_val_preprocessed_path = Path(workdir) / "nlp-dataset-val-preprocessed.json"
+        self.nlp_dataset_test_preprocessed_path = Path(workdir) / "nlp-dataset-test-preprocessed.json"
+        self.model_save_dir = Path(workdir) / "checkpoints"
 
         # keep track of the common prefix of the reports, to remove it
         self.common_prefix = None
