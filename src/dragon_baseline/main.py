@@ -198,7 +198,7 @@ class DragonBaseline(NLPAlgorithm):
         self.warmup_ratio = 0.1
         self.load_best_model_at_end = True
         self.metric_for_best_model = "loss"
-        self.fp16 = True
+        self.fp16 = True if self.device.type == "cuda" else False
         self.create_strided_training_examples = True
 
         # paths for saving the preprocessed data and model checkpoints
