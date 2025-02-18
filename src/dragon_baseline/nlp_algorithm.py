@@ -177,11 +177,11 @@ class NLPAlgorithm(ClassificationAlgorithm):
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
         # paths
-        self.dataset_train_path = self._input_path / "nlp-training-dataset.json"
-        self.dataset_val_path = self._input_path / "nlp-validation-dataset.json"
-        self.dataset_test_path = self._input_path / "nlp-test-dataset.json"
-        self.task_details_path = self._input_path / "nlp-task-configuration.json"
-        self.test_predictions_path = self._output_path / "nlp-predictions-dataset.json"
+        self.dataset_train_path = Path(self._input_path) / "nlp-training-dataset.json"
+        self.dataset_val_path = Path(self._input_path) / "nlp-validation-dataset.json"
+        self.dataset_test_path = Path(self._input_path) / "nlp-test-dataset.json"
+        self.task_details_path = Path(self._input_path) / "nlp-task-configuration.json"
+        self.test_predictions_path = Path(self._output_path) / "nlp-predictions-dataset.json"
 
     def process(self):
         self.load()
